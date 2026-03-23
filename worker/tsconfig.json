@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    // Workers use ES modules — NOT CommonJS like Node.js
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    // "Bundler" = wrangler/ESBuild handles resolution, not tsc
+    // No "dom" lib — workers run in Cloudflare's runtime, not a browser
+    "lib": ["ES2022"],
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "types": ["@cloudflare/workers-types"],
+    // Tell TypeScript where to find our monorepo packages
+    "paths": {
+      "@blackjack/game-logic": ["../packages/game-logic/src/index.ts"],
+      "@blackjack/shared": ["../packages/shared/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

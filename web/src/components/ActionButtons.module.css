@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  box-shadow: var(--shadow);
+}
+
+.btnHit {
+  background: var(--button-green);
+  color: white;
+}
+.btnHit:hover:not(:disabled) {
+  background: var(--button-green-hover);
+}
+
+.btnStand {
+  background: var(--button-red);
+  color: white;
+}
+.btnStand:hover:not(:disabled) {
+  background: var(--button-red-hover);
+}
+
+.btnDouble {
+  background: var(--button-gold);
+  color: white;
+}
+.btnDouble:hover:not(:disabled) {
+  background: var(--button-gold-hover);
+}
+
+.btnSplit {
+  background: var(--button-blue);
+  color: white;
+}
+.btnSplit:hover:not(:disabled) {
+  background: var(--button-blue-hover);
+}

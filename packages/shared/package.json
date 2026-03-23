@@ -1,0 +1,12 @@
+{
+  "name": "@blackjack/shared",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+    "@blackjack/game-logic": "*"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.2"
+  }
+}

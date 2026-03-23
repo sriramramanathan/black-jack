@@ -1,0 +1,17 @@
+name = "blackjack"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# Durable Objects binding: gives the worker access to BlackjackRoom instances.
+# The `name` is how you reference it in code (env.BLACKJACK_ROOM).
+# The `class_name` must match the exported class name in your TypeScript.
+[durable_objects]
+bindings = [
+  { name = "BLACKJACK_ROOM", class_name = "BlackjackRoom" }
+]
+
+# Migrations tell Cloudflare when you're adding/renaming/removing DO classes.
+# Every time you change DO class names, add a new migration entry.
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["BlackjackRoom"]

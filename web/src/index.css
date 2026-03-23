@@ -1,0 +1,95 @@
+/* CSS custom properties (variables) — define the casino colour palette once,
+   use everywhere. Change a colour here and it updates across the whole app. */
+:root {
+  --felt-dark: #0d3b1a;
+  --felt: #1a5c2a;
+  --felt-light: #2d7a3a;
+  --card-bg: #fffdf5;
+  --card-red: #c0392b;
+  --card-black: #1a1a1a;
+  --card-back: #1a237e;
+  --chip-gold: #f59e0b;
+  --chip-border: #d97706;
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --button-blue: #1565c0;
+  --button-blue-hover: #1976d2;
+  --button-red: #b71c1c;
+  --button-red-hover: #c62828;
+  --button-green: #1b5e20;
+  --button-green-hover: #2e7d32;
+  --button-gold: #e65100;
+  --button-gold-hover: #f4511e;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --radius: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--felt-dark);
+  color: var(--text-primary);
+  font-family:
+    'Georgia',
+    'Times New Roman',
+    serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Shared button base — each button variant extends this */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.6rem 1.4rem;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease,
+    opacity 0.15s ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+input {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-primary);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+input:focus {
+  border-color: var(--chip-gold);
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
