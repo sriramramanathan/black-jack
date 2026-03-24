@@ -36,6 +36,21 @@
   margin-top: -12px;
 }
 
+.rulesLink {
+  background: none;
+  border: none;
+  color: var(--chip-gold);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rulesLink:hover {
+  color: #fbbf24;
+}
+
 .field {
   display: flex;
   flex-direction: column;

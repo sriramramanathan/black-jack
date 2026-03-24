@@ -1,11 +1,13 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from 'react';
+import { RulesModal } from '../components/RulesModal';
 import styles from './HomeScreen.module.css';
 export function HomeScreen({ onCreateGame, onJoinGame }) {
     const [playerName, setPlayerName] = useState('');
     const [joinCode, setJoinCode] = useState('');
     const [creating, setCreating] = useState(false);
     const [error, setError] = useState('');
+    const [showRules, setShowRules] = useState(false);
     const handleCreate = async () => {
         if (!playerName.trim())
             return setError('Enter your name first');
@@ -35,5 +37,5 @@ export function HomeScreen({ onCreateGame, onJoinGame }) {
         setError('');
         onJoinGame(playerName.trim(), joinCode.trim().toUpperCase());
     };
-    return (_jsx("div", { className: styles.container, children: _jsxs("div", { className: styles.card, children: [_jsx("h1", { className: styles.title, children: "\u2660 Blackjack \u2665" }), _jsx("p", { className: styles.subtitle, children: "Multiplayer \u00B7 Up to 4 players" }), _jsxs("div", { className: styles.field, children: [_jsx("label", { className: styles.fieldLabel, children: "Your name" }), _jsx("input", { value: playerName, onChange: e => setPlayerName(e.target.value), placeholder: "e.g. Alice", maxLength: 20, autoFocus: true })] }), error && _jsx("p", { className: styles.error, children: error }), _jsx("button", { className: styles.createBtn, onClick: handleCreate, disabled: creating, children: creating ? 'Creating room...' : '🎲 Create New Game' }), _jsxs("div", { className: styles.orDivider, children: [_jsx("hr", {}), _jsx("span", { children: "or join with a code" }), _jsx("hr", {})] }), _jsxs("div", { className: styles.joinRow, children: [_jsx("input", { value: joinCode, onChange: e => setJoinCode(e.target.value.toUpperCase()), placeholder: "Room code", maxLength: 6, className: styles.codeInput, onKeyDown: e => e.key === 'Enter' && handleJoin() }), _jsx("button", { className: styles.joinBtn, onClick: handleJoin, children: "Join \u2192" })] })] }) }));
+    return (_jsxs("div", { className: styles.container, children: [showRules && _jsx(RulesModal, { onClose: () => setShowRules(false) }), _jsxs("div", { className: styles.card, children: [_jsx("h1", { className: styles.title, children: "\u2660 Blackjack \u2665" }), _jsxs("p", { className: styles.subtitle, children: ["Multiplayer \u00B7 Up to 4 players \u00B7", ' ', _jsx("button", { className: styles.rulesLink, onClick: () => setShowRules(true), children: "How to play" })] }), _jsxs("div", { className: styles.field, children: [_jsx("label", { className: styles.fieldLabel, children: "Your name" }), _jsx("input", { value: playerName, onChange: e => setPlayerName(e.target.value), placeholder: "e.g. Alice", maxLength: 20, autoFocus: true })] }), error && _jsx("p", { className: styles.error, children: error }), _jsx("button", { className: styles.createBtn, onClick: handleCreate, disabled: creating, children: creating ? 'Creating room...' : '🎲 Create New Game' }), _jsxs("div", { className: styles.orDivider, children: [_jsx("hr", {}), _jsx("span", { children: "or join with a code" }), _jsx("hr", {})] }), _jsxs("div", { className: styles.joinRow, children: [_jsx("input", { value: joinCode, onChange: e => setJoinCode(e.target.value.toUpperCase()), placeholder: "Room code", maxLength: 6, className: styles.codeInput, onKeyDown: e => e.key === 'Enter' && handleJoin() }), _jsx("button", { className: styles.joinBtn, onClick: handleJoin, children: "Join \u2192" })] })] })] }));
 }

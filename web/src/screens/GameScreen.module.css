@@ -66,6 +66,29 @@
   letter-spacing: 0.04em;
 }
 
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: end;
+}
+
+.rulesLink {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  letter-spacing: 0.04em;
+}
+
+.rulesLink:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .dotOnline {
   width: 8px;
   height: 8px;

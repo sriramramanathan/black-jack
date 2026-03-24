@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RulesModal } from '../components/RulesModal';
 import styles from './HomeScreen.module.css';
 
 interface HomeScreenProps {
@@ -12,6 +13,7 @@ export function HomeScreen({ onCreateGame, onJoinGame }: HomeScreenProps) {
   const [joinCode, setJoinCode] = useState('');
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState('');
+  const [showRules, setShowRules] = useState(false);
 
   const handleCreate = async () => {
     if (!playerName.trim()) return setError('Enter your name first');
@@ -43,9 +45,13 @@ export function HomeScreen({ onCreateGame, onJoinGame }: HomeScreenProps) {
 
   return (
     <div className={styles.container}>
+      {showRules && <RulesModal onClose={() => setShowRules(false)} />}
       <div className={styles.card}>
         <h1 className={styles.title}>♠ Blackjack ♥</h1>
-        <p className={styles.subtitle}>Multiplayer · Up to 4 players</p>
+        <p className={styles.subtitle}>
+          Multiplayer · Up to 4 players ·{' '}
+          <button className={styles.rulesLink} onClick={() => setShowRules(true)}>How to play</button>
+        </p>
 
         <div className={styles.field}>
           <label className={styles.fieldLabel}>Your name</label>

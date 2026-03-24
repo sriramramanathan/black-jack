@@ -5,6 +5,7 @@ import { Card as CardComponent } from '../components/Card';
 import { ActionButtons } from '../components/ActionButtons';
 import { BetControls } from '../components/BetControls';
 import { ErrorToast } from '../components/ErrorToast';
+import { RulesModal } from '../components/RulesModal';
 import styles from './GameScreen.module.css';
 
 const DEAL_DELAY = 500;        // ms between cards in all deal/hit/dealer animations
@@ -296,7 +297,8 @@ export function GameScreen({ gameState, myPlayerId, isHost, isConnected, error, 
   const playersBeforeMe =
     phase === 'player_turns' && !isMyTurn && myIndex > activePlayerIndex
       ? myIndex - activePlayerIndex - 1 : 0;
-  const needToBet   = phase === 'betting' && myPlayer?.status === 'waiting_to_bet';
+  const needToBet     = phase === 'betting' && myPlayer?.status === 'waiting_to_bet';
+  const [showRules, setShowRules] = useState(false);
   const isRoundOver = phase === 'round_over';
   // Hide results/footer until dealer banner + animation fully completes
   const isDealerBusy = dealerPhase !== 'idle';
@@ -306,6 +308,8 @@ export function GameScreen({ gameState, myPlayerId, isHost, isConnected, error, 
   return (
     <div className={styles.layout}>
       {showConfetti && <Confetti />}
+
+      {showRules && <RulesModal onClose={() => setShowRules(false)} />}
 
       {/* ══════════════ MAIN TABLE ══════════════ */}
       <div className={styles.table}>
@@ -321,7 +325,10 @@ export function GameScreen({ gameState, myPlayerId, isHost, isConnected, error, 
             <span className={styles.phaseSubLabel}>Round Status</span>
             <span className={styles.phaseLabel}>{phase.replace(/_/g, ' ')}</span>
           </div>
-          <span className={isConnected ? styles.dotOnline : styles.dotOffline} />
+          <div className={styles.headerRight}>
+            <button className={styles.rulesLink} onClick={() => setShowRules(true)}>Rules</button>
+            <span className={isConnected ? styles.dotOnline : styles.dotOffline} />
+          </div>
         </div>
 
         {/* Dealer */}
